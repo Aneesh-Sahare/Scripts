@@ -1,12 +1,9 @@
 #!/bin/bash
 
-function create_user() {
-    username=$1
-    sudo useradd $username
-    sudo mkdir /home/$username
-    sudo chown $username:$username /home/$username
-    echo "User $username created successfully!"
-}
+read -p "Enter the username to create: " username
 
-user=$(create_user aneesh)
-echo "new user : $user"
+# Create user and set up home directory
+sudo useradd "$username"
+sudo mkdir -p /home/"$username"
+
+echo " User '$username' created successfully!"
